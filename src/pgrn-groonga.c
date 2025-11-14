@@ -567,6 +567,8 @@ PGrnPGTypeToGrnType(Oid pgTypeID, unsigned char *flags)
 		break;
 	case TIMESTAMPOID:
 	case TIMESTAMPTZOID:
+	case ORATIMESTAMPTZOID:
+	case ORATIMESTAMPOID:
 		typeID = GRN_DB_TIME;
 		break;
 	case TEXTOID:
@@ -574,6 +576,7 @@ PGrnPGTypeToGrnType(Oid pgTypeID, unsigned char *flags)
 		typeID = GRN_DB_LONG_TEXT;
 		break;
 	case VARCHAROID:
+	case ORAVARCHARBYTEOID:
 		typeID = GRN_DB_SHORT_TEXT; /* 4KB */
 		break;
 #ifdef NOT_USED

@@ -106,6 +106,8 @@ PGrnConvertFromData(Datum datum, Oid typeID, grn_obj *buffer)
 		break;
 	case TIMESTAMPOID:
 	case TIMESTAMPTZOID:
+	case ORATIMESTAMPTZOID:
+	case ORATIMESTAMPOID:
 	{
 		Timestamp value = DatumGetTimestamp(datum);
 		pg_time_t unixTimeLocal;
@@ -144,6 +146,7 @@ PGrnConvertFromData(Datum datum, Oid typeID, grn_obj *buffer)
 		break;
 	}
 	case VARCHAROID:
+	case ORAVARCHARBYTEOID:
 	{
 		VarChar *value = DatumGetVarCharPP(datum);
 		GRN_TEXT_SET(ctx, buffer, VARDATA_ANY(value), VARSIZE_ANY_EXHDR(value));
